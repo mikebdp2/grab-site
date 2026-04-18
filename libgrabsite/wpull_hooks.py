@@ -1,5 +1,4 @@
 import re
-import re2
 import os
 import sys
 import time
@@ -26,20 +25,11 @@ def cf(fname):
 	return os.path.join(working_dir, fname)
 
 def re_compile(regexp):
-	# Validate with re first, because re2 may be more prone to segfaulting on
-	# bad regexps, and because re returns useful errors.
 	try:
-		re.compile(regexp)
+		return re.compile(regexp)
 	except re.error as e:
 		# If standard re cannot compile it, raise immediately
 		raise e
-	try:
-		return re2.compile(regexp)
-	except Exception:
-		# Catch ANY error from re2 such as re2._re2.Error for unsupported syntax.
-		# Regular expressions with lookaround expressions cannot be compiled with
-		# re2, so on error try compiling with re.
-		return re.compile(regexp)
 
 def compile_combined_regexp(patterns):
 	# If there are no patterns, we want to ignore nothing, not everything.
@@ -106,8 +96,8 @@ class FileChangedWatcher(object):
 		return changed
 
 
-ICY_FIELD_PATTERN = re2.compile("(?i)^icy-|ice-|x-audiocast-")
-ICY_VALUE_PATTERN = re2.compile("(?i)^icecast")
+ICY_FIELD_PATTERN = re.compile("(?i)^icy-|ice-|x-audiocast-")
+ICY_VALUE_PATTERN = re.compile("(?i)^icecast")
 
 def get_content_length(response) -> int:
 	try:

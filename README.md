@@ -72,7 +72,7 @@ Install on Ubuntu 18.04, 20.04, 22.04, Debian 10 (buster), Debian 11 (bullseye)
 	sudo apt-get install --no-install-recommends \
 	    wget ca-certificates git build-essential libssl-dev zlib1g-dev \
 	    libbz2-dev libreadline-dev libsqlite3-dev libffi-dev libxml2-dev \
-	    libxslt1-dev libre2-dev pkg-config
+	    libxslt1-dev pkg-config
 	```
 
 	If you see `Unable to locate package`, run the two commands again.
@@ -147,7 +147,7 @@ For M1 Macs, use the next section instead of this one.
 
 	```
 	brew update
-	brew install python@3.8 libxslt re2 pkg-config
+	brew install python@3.8 libxslt pkg-config
 	/usr/local/opt/python@3.8/bin/python3 -m venv ~/gs-venv
 	PKG_CONFIG_PATH="/usr/local/opt/libxml2/lib/pkgconfig" ~/gs-venv/bin/pip install --no-binary lxml --upgrade git+https://github.com/ArchiveTeam/grab-site
 	```
@@ -170,7 +170,7 @@ For M1 Macs, use the next section instead of this one.
 
 	```
 	brew update
-	brew install python@3.8 libxslt re2 pkg-config
+	brew install python@3.8 libxslt pkg-config
 	/opt/homebrew/opt/python@3.8/bin/python3 -m venv ~/gs-venv
 	PKG_CONFIG_PATH="/opt/homebrew/opt/libxml2/lib/pkgconfig" ~/gs-venv/bin/pip install --no-binary lxml --upgrade git+https://github.com/ArchiveTeam/grab-site
 	```
